@@ -1,0 +1,768 @@
+:root{
+  --green: #1f6f43;
+  --green-light: #2f8f5a;
+  --white: #ffffff;
+  --shadow: 0 6px 18px rgba(0,0,0,0.6);
+  --gold: #FFD700;
+  --text-color: #1b1b1b;
+}
+
+/* ======================================================
+   GLOBALI + BASE
+   ====================================================== */
+/* Forzo box-sizing a border-box per tutti */
+*,*::before,*::after {
+    box-sizing: border-box;
+}
+html,body{
+  height:100%;
+  min-height:100vh;
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+  font-family:"Nunito", sans-serif;
+  color:var(--text-color);
+  position:relative;
+  background: url('background.png') no-repeat top center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+/* Desktop: sfondo fisso */
+@media (min-width:769px){
+  body{ background-attachment: fixed; }
+}
+
+/* Disabilita scroll (usato da JS) */
+body.no-scroll{ overflow-y:hidden; }
+
+/* Container principale (limite 960px) */
+.container{
+  max-width:960px;
+  margin:0 auto;
+  padding:24px;
+}
+
+/* ======================================================
+   HEADER E BANNER
+   ====================================================== */
+.hero{
+  text-align:center;
+  margin-bottom:40px;
+  transition: opacity .3s ease;
+}
+
+.brand{
+  font-family:"Montserrat", sans-serif;
+  font-size:28px;
+  font-weight:700;
+  color:var(--gold);
+  text-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+
+.regolamento-header {
+  text-align: center;
+  padding: 40px 20px 30px; /* compatto e più in alto */
+  position: relative;
+  color: #f0c14b; /* oro */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  border-radius: 12px;
+}
+
+/* Titolo principale */
+.regolamento-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 5px;
+  color: #f0c14b; /* oro */
+  text-shadow: 0 2px 6px rgba(0,0,0,.4);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Sottotitolo */
+.regolamento-subtitle {
+  font-size: 1.2rem;
+  color: #f4f4f4;
+  margin-top: 5px; /* più vicino al titolo */
+  line-height: 1.4;
+}
+
+/* Contenitore principale */
+.howToUsed {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Paragrafi */
+.howToUsed p {
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+/* Titoli sezioni */
+.rules h2 {
+  font-size: 1.8rem;
+  color: #f0c14b; 
+  margin-bottom: 20px;
+  border-bottom: 2px solid #841004; 
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Lista regole */
+.rules ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rules li {
+  background: rgba(255,255,255,0.05); 
+  border-left: 5px solid #841004;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rules li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Link */
+.rules a {
+  color: var(--gold); 
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Mobile */
+@media (max-width:768px) {
+  .regolamento-title {
+    font-size: 2rem;
+  }
+  .regolamento-subtitle {
+    font-size: 1rem;
+  }
+  .howToUsed {
+    padding: 20px 15px;
+  }
+  .rules h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+.banner-img{
+  width:420px;
+  max-width:95%;
+  height:auto;
+  margin-top:16px;
+  border-radius:16px;
+}
+
+.banner-text{
+  margin-top:12px;
+  font-size:20px;
+  font-weight:700;
+  color:var(--gold);
+}
+.descr-box {
+  text-decoration: none;
+  transition: transform 0.25s ease, color 0.25s ease;
+  display: inline-block; /* necessario per permettere la trasformazione */
+}
+
+.descr-box:hover {
+  transform: scale(1.10); /* ingrandisce del 12% */
+  color: #b22222; /* rosso natalizio */
+}
+/* ======================================================
+   GRIGLIE E CARD (Nuove regole .grid-days, .day-card)
+   ====================================================== */
+
+/* GRIGLIA PAGINA PRINCIPALE (.grid-days = .grid-vertical-tall) */
+.grid-days{
+  width:100%;
+  margin: 70px auto 0;
+  padding-bottom:100px;
+  display:grid;
+  gap: 15px;
+  justify-items:stretch;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  transition: all 1s ease-out;
+}
+
+/* Card Giorno (verde) */
+.day-card{
+  background: var(--green-light);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 22px 12px;
+  height: 320px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .25s ease, opacity .25s ease;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.day-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.4);
+}
+
+.day-card .day-title{
+  font-weight:700;
+  font-size:1.15rem;
+  margin-top:auto; /* per allineare in basso */
+}
+
+/* Stato attivo (Desktop + Mobile Base) */
+.day-card.active {
+  position: fixed;
+  z-index: 11000;
+  box-shadow: 0 25px 60px rgba(0,0,0,.7);
+  cursor: default;
+  /* La trasformazione fissa centrale è gestita dai media query per precisione */
+  transform: translate(-50%,-50%) !important;
+}
+
+/* Nascondi le card non attive */
+.grid-days.fade-others .day-card:not(.active),
+.day-card.hidden {
+  opacity:0;
+  pointer-events:none;
+  transform: scale(.7);
+  transition: all .4s ease-in;
+}
+
+/* Desktop: card attiva a centro-sinistra */
+@media (min-width:769px){
+  .day-card.active {
+    top: 55%;
+    left: 15%;
+    width: 280px;
+    height: 450px;
+  }
+}
+
+/* Mobile: card attiva e griglia */
+@media (max-width:768px){
+  /* Container e hero adattati per mobile */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+
+}
+  .hero{ margin-bottom:30px; }
+
+  .grid-days{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px; /* Unificato il gap */
+    padding-top: 10px; /* Aggiunto padding-top per evitare sovrapposizione */
+    margin-bottom: 10px;
+  }
+
+  /* Card attiva su Mobile (diventa a flusso, centrata sotto il banner) */
+  /* Card attiva su Mobile (centrata in posizione fissa) */
+.day-card.active {
+    position: absolute; /* o absolute se vuoi relativo al container */
+    z-index: 11000;
+    width: 200px;    /* larghezza fissa */
+    height: 350px;   /* altezza fissa */
+    top: 43%;        /* distanza dal top della finestra */
+    left: 50%;  /* centro orizzontale */
+    margin: -8% auto;     
+    transform: translateX(-50%); /* centra esattamente sul punto orizzontale */
+    box-shadow: var(--shadow);
+    cursor: default;
+    transition: all 0.8 ease; /* animazione morbida */
+}
+
+  /* Assicura che la classe fade-others non distorca il layout mobile */
+  .grid-days.fade-others{ transform:none !important; }
+
+  /* Body view-mode: sicurezza per JS */
+  body.view-mode{ overflow:auto !important; height:auto !important; }
+}
+
+/* ======================================================
+   ELENCO CARD (.cell-vertical) - Preservate per 'elenco_p.php'
+   ====================================================== */
+.grid-vertical{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+  gap:20px;
+  justify-items:stretch;
+}
+.howToUsed{
+  color: var(--white);
+  padding-top: 10%;
+  text-align: center;
+  font-size: 32px;
+  line-height: 1.5;
+}
+
+.cell-vertical{
+  background:var(--green-light);
+  color:var(--white);
+  border-radius:12px;
+  padding:12px;
+  min-height:120px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.cell-vertical:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 24px rgba(0,0,0,.3);
+}
+
+.cell-type{
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:3px;
+  opacity:.95;
+}
+
+.cell-class{
+  font-size:20px;
+  font-weight:700;
+  margin-top:25px;
+}
+
+@media (max-width:480px){
+  .grid-vertical{
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+    padding:0 8px;
+  }
+}
+
+/* ======================================================
+   PANNELLO INFO (4 BOX)
+   ====================================================== */
+/* Contenitore pannello info */
+.info-panel {
+  position: absolute;
+  z-index: 10900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.info-panel.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 769px) {
+  .info-panel {
+    top: 50%;
+    left: 40%;             
+    transform: translateY(-50%);
+    width: 60%;
+    max-width: 650px;
+  }
+}
+
+
+/* Mobile: verticale sotto la card */
+@media (max-width: 768px) {
+  .info-panel {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 420px;
+    margin: 40px auto 20px;
+  }
+}
+
+
+/* Stile card info */
+.info-single-card {
+  border: 5px solid #b22222;
+  filter: brightness(95%);
+  background: #f8f8ff;
+  color: var(--text-color);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+/* Titoli */
+.info-single-card .info-label {
+  margin-bottom: 8px;
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Testo */
+.info-single-card p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/* ======================================================
+   COMPONENTI VARI
+   ====================================================== */
+
+/* BOTTONE X (BACK) */
+.back-btn, .close-btn{
+  position:absolute;
+  top:25px;
+  left:25px;
+  font-size:40px;
+  font-weight:900;
+  padding:0;
+  line-height:1;
+  background:none;
+  color:var(--gold);
+  border:none;
+  cursor:pointer;
+  display:none;
+  z-index:12000;
+  text-shadow:0 2px 8px rgba(0,0,0,.5);
+  transition: transform .3s ease;
+}
+
+.back-btn:hover, .close-btn:hover{ transform:rotate(-100deg); }
+.back-btn.show, .close-btn.show, .close-btn.active { display:block; }
+
+@media (max-width:768px){
+  .back-btn, .close-btn{
+    top:100px;
+    left:20px;
+    font-size:45px;
+  }
+}
+
+/* MENU HAMBURGER + SIDE MENU */
+.menu-toggle{
+  position:fixed;
+  top:15px;
+  right:25px;
+  width:30px;
+  height:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:10000;
+}
+
+.menu-toggle span{
+  height:4px;
+  background:var(--gold);
+  border-radius:2px;
+  transition:all .5s ease;
+}
+
+.menu-toggle.open span:nth-child(1){ transform:rotate(45deg) translate(0,10px); }
+.menu-toggle.open span:nth-child(2){ transform:rotate(-45deg) translate(0,-10px); }
+
+ .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); /* semitrasparente */
+  z-index: 9998; /* sotto al menu */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Menu laterale */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -100%; /* nascosto */
+  width: 250px;
+  height: 100dvh;
+  background: #841004;
+  padding: 10px;
+  box-shadow: -4px 0 12px rgba(0,0,0,.7);
+  transition: right .5s ease;
+  z-index: 9999;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu.open {
+  right: 0; /* visibile */
+}
+
+.footer-note {
+  text-align: center;
+  margin: 24px 0;
+  padding-bottom: 50px;
+}
+.footer-note p {
+  color: #FFD700;
+  font-size: 16px;
+  font-weight: 600;
+}
+.footer-note a {
+  color: #FFD700;
+  text-decoration: underline;
+}
+.footer-note a:hover {
+  color: #fff176;
+}
+.side-menu.open{ right:0; }
+
+.side-menu ul{ list-style:none; padding:0; margin-top:40px; }
+.side-menu ul li{ margin:24px 0; }
+
+.side-menu ul li a{
+  color:var(--white);
+  font-size:22px;
+  font-weight:600;
+  text-decoration:none;
+  transition:color .3s ease;
+}
+
+.side-menu ul li a:hover{ color:var(--gold); }
+
+/* NOTE (posizionamenti testuali) */
+.text-right-note{
+  bottom:12px;
+  right:10px;
+  font-size:15px;
+  font-weight:600;
+  color:var(--gold);
+  opacity:.9;
+  z-index:9999;
+  margin-top: auto;
+}
+
+.text-left-note{
+  width:100%;
+  padding-left:10px;
+  margin-top:40px;
+  font-family:'Snowburst One';
+  font-size:16px;
+  font-weight:bold;
+  color:var(--gold);
+  text-shadow:2px 2px 6px rgba(0,0,0,.5);
+  position: fixed;
+  left: 16px;
+  bottom: 10px;
+  z-index: 12000;
+}
+@media (max-width:768px){
+  .text-left-note {
+  position: relative !important;
+  bottom: 20px;
+  left: 10px !important;
+  bottom: auto !important;
+  width: auto;
+  padding: 0;
+  font-family: 'Snowburst One';
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--gold);
+  text-shadow: 2px 2px 6px rgba(0,0,0,.5);
+  z-index: 12000;
+  pointer-events: none;
+}
+}
+
+/* NEVE */
+.snowflake{
+  position:fixed;
+  top:-10px;
+  z-index:9999;
+  color:#fff;
+  pointer-events:none;
+  user-select:none;
+  font-size:1.2rem;
+  animation-name:fall;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+
+@keyframes fall{
+  0%{ transform:translateY(0); opacity:1; }
+  100%{ transform:translateY(calc(100dvh - 20px)); opacity:.8; }
+}
+
+/* SMALL HELPERS */
+.hidden { display:none !important; }
+
+
+/* Contenitore del preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000; /* sopra tutto */
+  transition: opacity 0.5 linear;
+}
+
+/* GIF animata */
+.preloader-gif {
+  width: 50%;  /* dimensione della GIF */
+  height: auto;
+}
+
+/* ================= POPUP LOGIN / REGISTRAZIONE / OTP ================= */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background: url('popup.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  z-index: 12001;
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.popup.active {
+  display: flex;
+  animation: popupFadeIn 0.35s ease-out;
+}
+
+.popup h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--gold);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup input[type="email"],
+.popup input[type="password"],
+.popup input[type="text"] {
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.popup button{
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: 700;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.popup button:hover {
+  background-color: var(--green-light);
+}
+
+.popup .switch-popup {
+  margin-top: 8px;
+  color: var(--gold);
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+@keyframes popupFadeIn {
+  0% { opacity: 0; transform: translate(-50%, -45%); }
+  100% { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.info-single-card {
+  position: relative;
+}
+
+.heart-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #bbb;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.2);
+}
+
+.heart-btn.active {
+  color: var(--gold);
+}
+
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  min-width: 250px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#toast.success { background: #22c55e; color:white;}
+#toast.info    { background: #841004; color:var(--gold) ;}
+
+.password-style{
+  text-decoration: none;
+  color: var(--gold);
+  font-size: 20px;
+  text-align: left; 
+}

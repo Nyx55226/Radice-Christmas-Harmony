@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* SFONDO */
+body {
+    height: 100vh;
+    background: url("background.png") no-repeat center / cover;
+}
+
+/* GRID PRINCIPALE */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    height: 100%;
+}
+
+/* MAIN */
+.main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+/* BLOCCO SUPERIORE */
+.top {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.right {
+    position: fixed;
+    right: 30px;    /* distanza dal bordo destro */
+    bottom: 30px;   /* distanza dal bordo basso */
+    width: 18%;
+    
+}
+.top-right{
+    position: fixed;
+    right: 10px;
+    top: 20px;
+    height: 30%;
+}
+.table-container {
+    height: 650px;           /* altezza fissa */
+    overflow-y: auto;        /* scroll verticale quando necessario */
+    border-radius: 12px;     
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+}
+
+/* Mantieni lo stile della tua tabella */
+.table-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed; 
+}
+
+.table-container td, .table-container th {
+    padding: 8px 10px;
+}
+.table-container td{
+    font-size: 13px;          /* più piccolo */
+    white-space: nowrap;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 20px;
+    padding: 5px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-collapse: separate;  /* importante */
+    border-spacing: 0;          /* elimina spazi tra celle */
+}
+
+.card td {
+    border: none;   /* niente bordi */
+    padding: 5px 10px;
+}
+
+/* ISTOGRAMMA */
+.chart {
+    display: flex;
+    align-items: flex-end;       /* mantiene l'istogramma in basso */
+    justify-content: flex-start; /* resta a sinistra */
+    padding: 10px 40px 30px 40px; /* meno spazio sopra, più spazio sotto */
+}
+
+.chart-box {
+    width: 100%;        /* occupa tutta la larghezza disponibile */
+    height: 700px;      /* più alto */
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.chart canvas {
+    width: 95% !important;   /* quasi tutta la larghezza disponibile */
+    height: 650px !important; /* molto più alto */
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+}
+
+button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 20px;
+    background: #001F3F;
+    color: white;
+    cursor: pointer;
+    width: 250px;
+    height: 100px;
+}
+
+#toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) translateY(20px);
+  transition: 0.3s ease;
+  z-index: 9999;
+  background: #001F3F; 
+  color:white;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
