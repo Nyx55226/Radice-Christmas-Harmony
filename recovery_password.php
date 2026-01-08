@@ -25,14 +25,14 @@
             
                 $mail->CharSet = 'UTF-8';
                 $mail->setFrom(
-                'radicechristmasharmony@iragazzidelradice.it',
+                '',
                 'Radice Christmas Harmony'
                 );
                 $mail->isHTML(true);
                 $mail->addAddress($email);
                 $mail->Subject = 'Recupero Password';
                 $mail->Body = '<p>Hai richiesto di reimpostare la password per il tuo account.</p>
-                <p>Clicca qui per reimpostarla: <a href="https://www.iragazzidelradice.it/radicechristmasharmony/recovery_password.html">Recupera la password</a></p>
+                <p>Clicca qui per reimpostarla: <a href="http://localhost/dashboard/radice-christmas-harmony/recovery_password.html">Recupera la password</a></p>
                 <p>Se non hai richiesto questa operazione, ignora questa email.</p>
                 <p>Grazie,<br>Il team del Benedetto Radice</p>';
                 $mail->send();
@@ -66,7 +66,7 @@
             
                 $mail->CharSet = 'UTF-8';
                 $mail->setFrom(
-                'radicechristmasharmony@iragazzidelradice.it',
+                '',
                 'Radice Christmas Harmony'
                 );
                 $mail->isHTML(true);
@@ -74,7 +74,7 @@
                 $mail->Subject = 'Recupero Password';
                 $mail->Body = "<p>La tua password è stata cambiata con successo.</p>
                 <p>Se sei stato tu a effettuare questa modifica, puoi ignorare questa email.</p>
-                <p>Se non hai richiesto il cambio della password, contatta subito il nostro <a href='mailto:prof.michele.greco@isradice.edu.it'>supporto</a> per proteggere il tuo account.</p>
+                <p>Se non hai richiesto il cambio della password, contatta subito il nostro <a href=''>supporto</a> per proteggere il tuo account.</p>
                 <p>Grazie,<br>Il team del Benedetto Radice</p>";
                 $mail->send();
                 unset($_SESSION["email"], $_SESSION["token"]);

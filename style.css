@@ -482,10 +482,9 @@ body.no-scroll{ overflow-y:hidden; }
 
  .overlay {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6); /* semitrasparente */
-  z-index: 9998; /* sotto al menu */
+  width: 100%; height: 100vh;
+  background: rgba(0,0,0,0.6); 
+  z-index: 9998; 
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;

@@ -12,9 +12,9 @@ if(isset($_SESSION["admin"])){
 
 
 if($isConnect){
-  $temp_data=date("m/d/Y");
+  $temp_data=date("Y-m-d");
   $temp_orario=date("H:i:s");
-  $q="INSERT INTO accessi (data,orario) values ('$temp_data','$temp_orario')";
+  $q="INSERT INTO accessi (data,orario, id_utente) values ('$temp_data','$temp_orario',".$_SESSION["id"].")";
   $connessione->query($q);
 }
 $stringa_indice = "SELECT indice FROM _view WHERE link='radicechristmasharmony/'";

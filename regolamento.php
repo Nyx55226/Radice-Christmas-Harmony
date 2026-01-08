@@ -57,7 +57,7 @@
           <strong>Quando si Vota:</strong> Dal 21 dicembre al 6 gennaio! Ogni utente potrà esprimere tre preferenze e solo voti completi saranno validi.
         </li>
       </ul>
-      <p>Domande o dubbi? <a href="mailto:prof.michele.greco@isradice.edu.it">Scrivete qui</a></p>
+      <p>Domande o dubbi? <a href="">Scrivete qui</a></p>
     </section>
   </main>
 </body>

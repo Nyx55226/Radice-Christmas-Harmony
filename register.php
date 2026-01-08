@@ -13,10 +13,10 @@ if(isset($_POST['email']) && isset($_POST['password'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if(!str_ends_with($email, "@isradice.edu.it")){
-        echo "Email non valida";
-        exit;
-    }
+    // if(!str_ends_with($email, "@isradice.edu.it")){
+    //     echo "Email non valida";
+    //     exit;
+    // }
 
     if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)){
         echo "Password non valida";
@@ -41,7 +41,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
 
         $mail->CharSet = 'UTF-8';
         $mail->setFrom(
-        'radicechristmasharmony@iragazzidelradice.it',
+        '',
         'Radice Christmas Harmony'
         );
         $mail->addAddress($email);
@@ -91,14 +91,14 @@ if(isset($_POST["promemoria"])){
                 $mail->isMail();
                 $mail->CharSet = 'UTF-8';
                 $mail->setFrom(
-                'radicechristmasharmony@iragazzidelradice.it',
+                '',
                 'Radice Christmas Harmony');
         for($i=0;$i<count($emailNonValide);$i++){
             try {
                 $mail->clearAddresses();
                 $mail->addAddress($emailNonValide[$i]);
                 $mail->Subject = 'I tuoi voti non sono ancora validi';
-                $mail->isHTML(false); // esplicito
+                $mail->isHTML(false);
                 $mail->Body =
                 "Gentile studente,\n\n".
                 "abbiamo rilevato che hai espresso solo 1 o 2 voti nella nostra piattaforma.\n".

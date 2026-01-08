@@ -65,7 +65,7 @@ $connessione= new mysqli("localhost","root","","Sql1868450_1");
     </main>
     <footer class="footer-note">
       <p>Se il tuo lavoro non figura nell'elenco fai un click 
-        <a href="mailto:prof.michele.greco@isradice.edu.it">qui</a>.
+        <a href="">qui</a>.
       </p>
     </footer>
     <?php
